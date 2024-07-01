@@ -14,10 +14,10 @@
 
 ## 프로젝트 스펙
 
-Framework: Spring 5.2.2  
-Payment module: iamport  
-build tool: Maven  
-IDE: InteliJ
+`Framework`: Spring 5.2.2  
+`Payment module`: iamport  
+`build tool`: Maven  
+`IDE`: InteliJ
 
 ## ERD
 
