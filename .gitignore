@@ -38,4 +38,4 @@ build/
 .DS_Store
 
 ### Variables
-/resources/application.properties
+**/src/main/resources/**
