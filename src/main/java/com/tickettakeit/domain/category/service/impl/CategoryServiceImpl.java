@@ -15,7 +15,5 @@ public class CategoryServiceImpl implements CategoryService {
         CategoryResponse categoryResponse =  new CategoryResponse();
         categoryResponse.setItems(categoryDAO.selectAllCategories());
         return categoryResponse;
-
     }
-
 }
