@@ -1,4 +1,3 @@
-
 // 장바구니!
 // 장바구니 관련 요소 찾기.
 const basketStarterEl = document.querySelector('header .basket-starter')
@@ -236,10 +235,11 @@ function printPage(start, categoryId) {
   } else {
     displayInfoRequestUrl = `http://localhost:8080/api/products?cursor=${start}&categoryId=${categoryId}`;
   }
-  let template = document.getElementById("itemList").innerText;
-  let container = document.querySelectorAll(".lst_event_box");
+  // let template = document.getElementById("itemList").innerText;
+  // let container = document.querySelectorAll(".lst_event_box");
 
   sendAjax(displayInfoRequestUrl, function(response) {
+    console.log(response);
     if(start === 0) {
       printTotalCount(response.totalCount);
     }
@@ -290,59 +290,63 @@ function printPromotions() {
   });
 }
 
-document.querySelector(".event_tab_lst").addEventListener("click", function(evt) {
-  resetTabCss();
+// document.querySelector(".event_tab_lst").addEventListener("click", function(evt) {
+//   resetTabCss();
+//
+//   if(evt.target.tagName === "LI") {
+//     currentCategoryId = evt.target.dataset.category;
+//     evt.target.querySelector(".anchor").classList.add("active");
+//
+//   } else if(evt.target.tagName === "A") {
+//     currentCategoryId = evt.target.parentNode.dataset.category;
+//     evt.target.classList.add("active");
+//
+//   } else if(evt.target.tagName === "SPAN") {
+//     currentCategoryId = evt.target.parentNode.parentNode.dataset.category;
+//     evt.target.closest(".anchor").classList.add("active");
+//
+//   }
+//
+//   let container = document.querySelectorAll(".lst_event_box");
+//   container.forEach(function(target){
+//     target.innerHTML = "";
+//   });
+//   document.querySelector(".btn").style.display = "block";
+//   clickCount = 0;
+//   let start = clickCount;
+//   printPage(start, currentCategoryId);
+// });
+//
+// function initImageSlide() {
+//   let img_slide_ul = document.querySelector('.visual_img');
+//   let firstProduct = img_slide_ul.firstElementChild.cloneNode(true);
+//
+//   img_slide_ul.appendChild(firstProduct);
+//
+//   let index = 0;
+//   setInterval(function() {
+//     let pre = parseInt(img_slide_ul.style.right);
+//     img_slide_ul.style.transition = ".3s"
+//     img_slide_ul.style.right = pre + 414 + "px";
+//     index++;
+//     if(index == 11) {
+//       setTimeout(function(){
+//         img_slide_ul.style.transition = "0s";
+//         img_slide_ul.style.right = 0 + "px";
+//       }, 3001)
+//       index = 0;
+//     }
+//   } ,4000)
+//
+// }
+//
+// function resetTabCss() {
+//   let tablinks = document.getElementsByClassName("anchor");
+//   for (let i = 0; i < tablinks.length; i++) {
+//     tablinks[i].className = tablinks[i].className.replace("active", "");
+//   }
+// }
 
-  if(evt.target.tagName === "LI") {
-    currentCategoryId = evt.target.dataset.category;
-    evt.target.querySelector(".anchor").classList.add("active");
-
-  } else if(evt.target.tagName === "A") {
-    currentCategoryId = evt.target.parentNode.dataset.category;
-    evt.target.classList.add("active");
-
-  } else if(evt.target.tagName === "SPAN") {
-    currentCategoryId = evt.target.parentNode.parentNode.dataset.category;
-    evt.target.closest(".anchor").classList.add("active");
-
-  }
-
-  let container = document.querySelectorAll(".lst_event_box");
-  container.forEach(function(target){
-    target.innerHTML = "";
-  });
-  document.querySelector(".btn").style.display = "block";
-  clickCount = 0;
-  let start = clickCount;
-  printPage(start, currentCategoryId);
+sendAjax(`/api/categories`, function(response) {
+  console.log(response);
 });
-
-function initImageSlide() {
-  let img_slide_ul = document.querySelector('.visual_img');
-  let firstProduct = img_slide_ul.firstElementChild.cloneNode(true);
-
-  img_slide_ul.appendChild(firstProduct);
-
-  let index = 0;
-  setInterval(function() {
-    let pre = parseInt(img_slide_ul.style.right);
-    img_slide_ul.style.transition = ".3s"
-    img_slide_ul.style.right = pre + 414 + "px";
-    index++;
-    if(index == 11) {
-      setTimeout(function(){
-        img_slide_ul.style.transition = "0s";
-        img_slide_ul.style.right = 0 + "px";
-      }, 3001)
-      index = 0;
-    }
-  } ,4000)
-
-}
-
-function resetTabCss() {
-  let tablinks = document.getElementsByClassName("anchor");
-  for (let i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace("active", "");
-  }
-}
