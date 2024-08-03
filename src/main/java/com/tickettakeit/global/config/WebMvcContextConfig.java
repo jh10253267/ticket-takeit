@@ -31,7 +31,7 @@ public class WebMvcContextConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addRedirectViewController("/", "/main");
+        registry.addRedirectViewController("/", "/takeit");
     }
 
     @Bean
