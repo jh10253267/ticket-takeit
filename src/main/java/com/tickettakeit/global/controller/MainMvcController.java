@@ -14,9 +14,9 @@ import java.security.Principal;
 public class MainMvcController {
     private final ReservationService reservationService;
 
-    @GetMapping("/main")
+    @GetMapping("/takeit")
     public String mainPage() {
-        return "mainpage";
+        return "index";
     }
     @GetMapping("/detail")
     public String detailPage(@RequestParam("id") int id, Model model) {
